@@ -1,0 +1,52 @@
+{%extends 'main/base.html'%}
+{% load static %}
+
+{%block title%}
+    <title>Search</title>
+{%endblock%}
+
+{%block content%}
+<main>
+
+   
+    <div class="album py-5 bg-body-tertiary"> 
+      <div class="container" style="width: 70%;">
+  
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {%for item in items%}
+            <div class="col">
+                <div class="card shadow-sm">
+
+                  <img class = "card-img-top-first" style = "height: 180px; width: 70%; display:block;" alt = "item" src = "{{item.photo.url}}">
+
+                  <div class="card-body">
+                    <p class="card-text">{{item.name}}</p>
+                    <p>{{item.description}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="/item/{{item.id}}" class="btn btn-sm btn-outline-secondary">Подробнее</a>
+                        <!-- <a href="#" class="btn btn-sm btn-outline-secondary">В корзину</a> -->
+      
+                      </div>
+                      <small class="text-body-secondary">Цена: {{item.price}} &#8376</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+        
+            </div>
+          
+      </div>
+      </div>
+        
+    </div>
+     
+    
+  
+  </main>
+
+{%endblock%}
+
+
+

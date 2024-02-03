@@ -1,0 +1,31 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>
+    Личный кабинет
+</h1>
+
+{% if request.user.is_authenticated %}
+<div style="background-color: rgb(214, 217, 202);">
+    <p>Вы авторизованы как {{user.username}}</p>
+    <p>Ваша почта: {{user.email}}</p>
+    <p>Ваше имя: {{user.first_name}}</p>
+    <p>Ваша фамилия: {{user.last_name}}</p>
+    <p>Ваш город: {{user.profile.city}}</p>
+    <p>Дата рождения: {{user.profile.date_of_birth}}</p>
+</div>
+<p>
+<a href="{% url 'user_auth:edit' %}">Редактируйте свои данные</a>
+</p>
+<p>
+<a href="{% url 'main:add' %}">Добавить товар</a>
+</p>
+<p>
+<a href="{% url 'main:delete' %}">Удалить товар</a>
+</p>
+{%endif%}
+
+
+{% endblock content %}

@@ -1,0 +1,37 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div>
+    <h1>Корзина покупок</h1>
+</div>
+
+<div style="margin: 10px">
+    {% for item in cart %}
+    {% with product=item.product %}
+        <div>
+            
+            <img src="/media/{{product.photo}}" height="220px" width = "240px">    
+            <p> {{product.name}} </p>
+            <p> {{product.price}} </p>
+            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+            {% csrf_token %}
+            {{ item.update_quantity_form.quantity }}
+            {{ item.update_quantity_form.update }}
+            <input type="submit" value ="Изменить количество">
+            </form>
+        </div>
+        <div>
+           {{ item.total_price }} &#8376
+        </div>
+    {% endwith %} 
+    {% endfor %}   
+</div>
+  
+<div style="margin: 10px">
+    Общая сумма покупок
+    <small> {{ cart.get_total_price }} &#8376</small>
+   
+</div>
+{% endblock %}

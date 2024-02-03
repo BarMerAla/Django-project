@@ -1,0 +1,24 @@
+{%extends 'main/base.html'%}
+{% load static %}
+
+{%block title%}
+    <title>Main page</title>
+
+{%endblock%}
+
+{%block content%}
+
+<main class = "detail">
+
+  <form method="POST">
+       {{ delete_form }}
+       {% csrf_token %}
+
+    <input type = "submit" value = "Удалить товар">
+  </form>
+  
+</main>
+
+
+
+{%endblock%}
